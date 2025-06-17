@@ -86,72 +86,9 @@
     ></div>
 
     <div class="stepper__main__content">
-      <div class="stepper__main__content__top__segment">
-        <span
-          class="stepper__main__content__top__segment__title stepper__big__title"
-          >לפני שמתחילים - פירוט שלבי החתמה</span
-        >
-        <ol>
-          <li class="stepper__main__content__top__segment__list__item">
-            בחירת כלי ומחלקה
-          </li>
-          <li class="stepper__main__content__top__segment__list__item">
-            ירד קובץ למחשבך - בלחיצה על הקובץ תצטרכו להצמיד את החוגר של מצבע/ת
-            החתימה אל קורא הכרטיסים
-          </li>
-          <li class="stepper__main__content__top__segment__list__item">
-            יוצגו הפרטים האישיים של מצבע/ת החתימה - יש לוודא שהם נכונים
-          </li>
-          <li class="stepper__main__content__top__segment__list__item">
-            חתימה על הציוד - קשקוש קטן זה מספיק :)
-          </li>
-        </ol>
-      </div>
+      <div class="stepper__main__content__top__segment">טקסט</div>
       <div class="stepper__main__content__seperator"></div>
-      <div class="stepper__main__content__bottom__segment">
-        <span
-          class="stepper__main__content__bottom__segment__title stepper__big__title"
-          >בואו נתחיל!</span
-        >
-        <form
-          class="stepper__main__content__bottom__segment__input__area"
-          [formGroup]="filters"
-        >
-          <mat-form-field formGroupName="kliGroup">
-            <mat-label>כלי</mat-label>
-            <mat-select formControlName="kli">
-              <mat-option> חיפוש... (נשלים בבסיס) </mat-option>
-              <mat-option
-                *ngFor="let kli of kodKlis$ | async"
-                [value]="kli.kodKli"
-              >
-                {{ kli.kodKliDescription }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field formGroupName="machlakaGroup">
-            <mat-label>מחלקה</mat-label>
-            <mat-select formControlName="machlaka">
-              <mat-option> חיפוש... (נשלים בבסיס) </mat-option>
-              <mat-option
-                *ngFor="let machlaka of machlakot$ | async"
-                [value]="machlaka.machlakaId"
-              >
-                {{ machlaka.machlakaDescription }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-        <button
-          mat-stroked-button
-          [disabled]="!(kliAndMachlakaSelected$ | async)"
-          (click)="onEquipmentListClick()"
-        >
-          <mat-icon>save_alt</mat-icon>
-          רשימת ציוד
-        </button>
-      </div>
+      <div class="stepper__main__content__bottom__segment">טקסט</div>
     </div>
 
     <ng-container
