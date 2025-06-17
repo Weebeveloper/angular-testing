@@ -23,11 +23,11 @@ export class TakashPdfPopupComponnt {
   readonly filters = new FormGroup({
     kliGroup: new FormGroup({
       filter: new FormControl(''),
-      kli: new FormControl(''),
+      kli: new FormControl<kodKliModel | undefined>(undefined),
     }),
     machlakaGroup: new FormGroup({
       filter: new FormControl(''),
-      machlaka: new FormControl(''),
+      machlaka: new FormControl<machlakaModel | undefined>(undefined),
     }),
   });
 
@@ -71,10 +71,10 @@ export class TakashPdfPopupComponnt {
     ]),
   ]).pipe(
     tap(() =>
-      this.filters.controls.machlakaGroup.controls.machlaka.setValue('')
+      this.filters.controls.machlakaGroup.controls.machlaka.setValue(undefined)
     ),
     map(([kodKli, machlakot]) =>
-      machlakot!.filter((machlaka) => machlaka.kodKli === kodKli)
+      machlakot!.filter((machlaka) => machlaka.kodKli === kodKli!.kodKli)
     )
   );
 
@@ -93,10 +93,15 @@ export class TakashPdfPopupComponnt {
     )
   );
 
-  readonly kliAndMachlakaSelected$ = combineLatest([
+  readonly isKliAndMachlakaSelected$ = combineLatest([
     this.filters.controls.kliGroup.controls.kli.valueChanges,
     this.filters.controls.machlakaGroup.controls.machlaka.valueChanges,
-  ]).pipe(map(([kli, machlaka]) => !!kli && !!machlaka));
+  ]).pipe(map(([kli, machlaka]) => !!kli?.kodKli && !!machlaka?.machlakaId));
+
+  readonly personalData$ = of({
+    fullName: 'ישראל ישראלי',
+    personalNumber: '0000000',
+  });
 
   advanceStep() {
     this.stepper.next();
