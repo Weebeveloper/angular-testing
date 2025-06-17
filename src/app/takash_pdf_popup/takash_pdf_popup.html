@@ -7,7 +7,8 @@
 
     <div class="stepper__main__content">
       <div class="stepper__main__content__top__segment">
-        <span class="stepper__main__content__top__segment__title"
+        <span
+          class="stepper__main__content__top__segment__title stepper__small__title"
           >לפני שמתחילים - פירוט שלבי החתמה</span
         >
         <ol>
@@ -28,7 +29,8 @@
       </div>
       <div class="stepper__main__content__seperator"></div>
       <div class="stepper__main__content__bottom__segment">
-        <span class="stepper__main__content__bottom__segment__title"
+        <span
+          class="stepper__main__content__bottom__segment__title stepper__big__title"
           >בואו נתחיל!</span
         >
         <form
@@ -85,7 +87,8 @@
 
     <div class="stepper__main__content">
       <div class="stepper__main__content__top__segment">
-        <span class="stepper__main__content__top__segment__title"
+        <span
+          class="stepper__main__content__top__segment__title stepper__big__title"
           >לפני שמתחילים - פירוט שלבי החתמה</span
         >
         <ol>
@@ -106,7 +109,8 @@
       </div>
       <div class="stepper__main__content__seperator"></div>
       <div class="stepper__main__content__bottom__segment">
-        <span class="stepper__main__content__bottom__segment__title"
+        <span
+          class="stepper__main__content__bottom__segment__title stepper__big__title"
           >בואו נתחיל!</span
         >
         <form
@@ -162,70 +166,18 @@
     ></div>
 
     <div class="stepper__main__content">
-      <div class="stepper__main__content__top__segment">
-        <span class="stepper__main__content__top__segment__title"
-          >לפני שמתחילים - פירוט שלבי החתמה</span
-        >
-        <ol>
-          <li class="stepper__main__content__top__segment__list__item">
-            בחירת כלי ומחלקה
-          </li>
-          <li class="stepper__main__content__top__segment__list__item">
-            ירד קובץ למחשבך - בלחיצה על הקובץ תצטרכו להצמיד את החוגר של מצבע/ת
-            החתימה אל קורא הכרטיסים
-          </li>
-          <li class="stepper__main__content__top__segment__list__item">
-            יוצגו הפרטים האישיים של מצבע/ת החתימה - יש לוודא שהם נכונים
-          </li>
-          <li class="stepper__main__content__top__segment__list__item">
-            חתימה על הציוד - קשקוש קטן זה מספיק :)
-          </li>
-        </ol>
-      </div>
-      <div class="stepper__main__content__seperator"></div>
-      <div class="stepper__main__content__bottom__segment">
-        <span class="stepper__main__content__bottom__segment__title"
-          >בואו נתחיל!</span
-        >
-        <form
-          class="stepper__main__content__bottom__segment__input__area"
-          [formGroup]="filters"
-        >
-          <mat-form-field formGroupName="kliGroup">
-            <mat-label>כלי</mat-label>
-            <mat-select formControlName="kli">
-              <mat-option> חיפוש... (נשלים בבסיס) </mat-option>
-              <mat-option
-                *ngFor="let kli of kodKlis$ | async"
-                [value]="kli.kodKli"
-              >
-                {{ kli.kodKliDescription }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field formGroupName="machlakaGroup">
-            <mat-label>מחלקה</mat-label>
-            <mat-select formControlName="machlaka">
-              <mat-option> חיפוש... (נשלים בבסיס) </mat-option>
-              <mat-option
-                *ngFor="let machlaka of machlakot$ | async"
-                [value]="machlaka.machlakaId"
-              >
-                {{ machlaka.machlakaDescription }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-        <button
-          mat-stroked-button
-          [disabled]="!(kliAndMachlakaSelected$ | async)"
-          (click)="onEquipmentListClick()"
-        >
-          <mat-icon>save_alt</mat-icon>
-          רשימת ציוד
-        </button>
-      </div>
+      <img src="assets/checkmark.png" [draggable]="false" />
+      <span
+        class="stepper__main__content__all__page__segment stepper__big__title"
+        >החתימה בוצעה בהצלחה!</span
+      >
+      <span class="stepper__main__content__all__page__segment stepper__subtitle"
+        >שיב לב! תמיד אפשר לצפות בחתימות באזור החתימות</span
+      >
+      <button mat-stroked-button (click)="onSignatureClick()">
+        <mat-icon>save_alt</mat-icon>
+        חתימה
+      </button>
     </div>
 
     <ng-container
@@ -242,11 +194,11 @@
     >
     <span class="stepper__top__layout__title__container__text">חתימות</span>
   </div>
-  <div class="stepper__title__seperator"></div>
+  <div class="stepper__section__seperator"></div>
 </ng-template>
 
 <ng-template #stepperLayoutBottom let-buttonText>
-  <div class="stepper__title__seperator"></div>
+  <div class="stepper__section__seperator"></div>
   <div class="stepper__bottom__layout__buttons__container">
     <button
       mat-flat-button
@@ -270,7 +222,7 @@
 </ng-template>
 
 <ng-template #stepperLayoutBottomLastPage let-buttonText>
-  <div class="stepper__title__seperator"></div>
+  <div class="stepper__section__seperator"></div>
   <div data-last-page class="stepper__bottom__layout__buttons__container">
     <button
       mat-flat-button

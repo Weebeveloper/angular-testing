@@ -105,4 +105,8 @@ export class TakashPdfPopupComponnt {
   onEquipmentListClick() {
     console.log('print equipment list');
   }
+
+  onSignatureClick() {
+    console.log('print signature');
+  }
 }
