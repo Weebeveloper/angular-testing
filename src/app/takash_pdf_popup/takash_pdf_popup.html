@@ -1,0 +1,284 @@
+<mat-stepper class="stepper" [linear]="true" [dir]="'rtl'" #stepper>
+  <mat-step>
+    <div
+      [ngTemplateOutlet]="stepperLayoutTop"
+      class="stepper__top__layout"
+    ></div>
+
+    <div class="stepper__main__content">
+      <div class="stepper__main__content__top__segment">
+        <span class="stepper__main__content__top__segment__title"
+          >לפני שמתחילים - פירוט שלבי החתמה</span
+        >
+        <ol>
+          <li class="stepper__main__content__top__segment__list__item">
+            בחירת כלי ומחלקה
+          </li>
+          <li class="stepper__main__content__top__segment__list__item">
+            ירד קובץ למחשבך - בלחיצה על הקובץ תצטרכו להצמיד את החוגר של מצבע/ת
+            החתימה אל קורא הכרטיסים
+          </li>
+          <li class="stepper__main__content__top__segment__list__item">
+            יוצגו הפרטים האישיים של מצבע/ת החתימה - יש לוודא שהם נכונים
+          </li>
+          <li class="stepper__main__content__top__segment__list__item">
+            חתימה על הציוד - קשקוש קטן זה מספיק :)
+          </li>
+        </ol>
+      </div>
+      <div class="stepper__main__content__seperator"></div>
+      <div class="stepper__main__content__bottom__segment">
+        <span class="stepper__main__content__bottom__segment__title"
+          >בואו נתחיל!</span
+        >
+        <form
+          class="stepper__main__content__bottom__segment__input__area"
+          [formGroup]="filters"
+        >
+          <mat-form-field formGroupName="kliGroup">
+            <mat-label>כלי</mat-label>
+            <mat-select formControlName="kli">
+              <mat-option> חיפוש... (נשלים בבסיס) </mat-option>
+              <mat-option
+                *ngFor="let kli of kodKlis$ | async"
+                [value]="kli.kodKli"
+              >
+                {{ kli.kodKliDescription }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field formGroupName="machlakaGroup">
+            <mat-label>מחלקה</mat-label>
+            <mat-select formControlName="machlaka">
+              <mat-option> חיפוש... (נשלים בבסיס) </mat-option>
+              <mat-option
+                *ngFor="let machlaka of machlakot$ | async"
+                [value]="machlaka.machlakaId"
+              >
+                {{ machlaka.machlakaDescription }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+        <button
+          mat-stroked-button
+          [disabled]="!(kliAndMachlakaSelected$ | async)"
+          (click)="onEquipmentListClick()"
+        >
+          <mat-icon>save_alt</mat-icon>
+          רשימת ציוד
+        </button>
+      </div>
+    </div>
+
+    <ng-container
+      *ngTemplateOutlet="stepperLayoutBottom; context: {$implicit: 'הבא'}"
+      class="stepper__bottom__layout"
+    ></ng-container>
+  </mat-step>
+  <mat-step>
+    <div
+      [ngTemplateOutlet]="stepperLayoutTop"
+      class="stepper__top__layout"
+    ></div>
+
+    <div class="stepper__main__content">
+      <div class="stepper__main__content__top__segment">
+        <span class="stepper__main__content__top__segment__title"
+          >לפני שמתחילים - פירוט שלבי החתמה</span
+        >
+        <ol>
+          <li class="stepper__main__content__top__segment__list__item">
+            בחירת כלי ומחלקה
+          </li>
+          <li class="stepper__main__content__top__segment__list__item">
+            ירד קובץ למחשבך - בלחיצה על הקובץ תצטרכו להצמיד את החוגר של מצבע/ת
+            החתימה אל קורא הכרטיסים
+          </li>
+          <li class="stepper__main__content__top__segment__list__item">
+            יוצגו הפרטים האישיים של מצבע/ת החתימה - יש לוודא שהם נכונים
+          </li>
+          <li class="stepper__main__content__top__segment__list__item">
+            חתימה על הציוד - קשקוש קטן זה מספיק :)
+          </li>
+        </ol>
+      </div>
+      <div class="stepper__main__content__seperator"></div>
+      <div class="stepper__main__content__bottom__segment">
+        <span class="stepper__main__content__bottom__segment__title"
+          >בואו נתחיל!</span
+        >
+        <form
+          class="stepper__main__content__bottom__segment__input__area"
+          [formGroup]="filters"
+        >
+          <mat-form-field formGroupName="kliGroup">
+            <mat-label>כלי</mat-label>
+            <mat-select formControlName="kli">
+              <mat-option> חיפוש... (נשלים בבסיס) </mat-option>
+              <mat-option
+                *ngFor="let kli of kodKlis$ | async"
+                [value]="kli.kodKli"
+              >
+                {{ kli.kodKliDescription }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field formGroupName="machlakaGroup">
+            <mat-label>מחלקה</mat-label>
+            <mat-select formControlName="machlaka">
+              <mat-option> חיפוש... (נשלים בבסיס) </mat-option>
+              <mat-option
+                *ngFor="let machlaka of machlakot$ | async"
+                [value]="machlaka.machlakaId"
+              >
+                {{ machlaka.machlakaDescription }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+        <button
+          mat-stroked-button
+          [disabled]="!(kliAndMachlakaSelected$ | async)"
+          (click)="onEquipmentListClick()"
+        >
+          <mat-icon>save_alt</mat-icon>
+          רשימת ציוד
+        </button>
+      </div>
+    </div>
+
+    <ng-container
+      *ngTemplateOutlet="stepperLayoutBottom; context: {$implicit: 'סיום'}"
+      class="stepper__bottom__layout"
+    ></ng-container>
+  </mat-step>
+  <mat-step>
+    <div
+      [ngTemplateOutlet]="stepperLayoutTop"
+      class="stepper__top__layout"
+    ></div>
+
+    <div class="stepper__main__content">
+      <div class="stepper__main__content__top__segment">
+        <span class="stepper__main__content__top__segment__title"
+          >לפני שמתחילים - פירוט שלבי החתמה</span
+        >
+        <ol>
+          <li class="stepper__main__content__top__segment__list__item">
+            בחירת כלי ומחלקה
+          </li>
+          <li class="stepper__main__content__top__segment__list__item">
+            ירד קובץ למחשבך - בלחיצה על הקובץ תצטרכו להצמיד את החוגר של מצבע/ת
+            החתימה אל קורא הכרטיסים
+          </li>
+          <li class="stepper__main__content__top__segment__list__item">
+            יוצגו הפרטים האישיים של מצבע/ת החתימה - יש לוודא שהם נכונים
+          </li>
+          <li class="stepper__main__content__top__segment__list__item">
+            חתימה על הציוד - קשקוש קטן זה מספיק :)
+          </li>
+        </ol>
+      </div>
+      <div class="stepper__main__content__seperator"></div>
+      <div class="stepper__main__content__bottom__segment">
+        <span class="stepper__main__content__bottom__segment__title"
+          >בואו נתחיל!</span
+        >
+        <form
+          class="stepper__main__content__bottom__segment__input__area"
+          [formGroup]="filters"
+        >
+          <mat-form-field formGroupName="kliGroup">
+            <mat-label>כלי</mat-label>
+            <mat-select formControlName="kli">
+              <mat-option> חיפוש... (נשלים בבסיס) </mat-option>
+              <mat-option
+                *ngFor="let kli of kodKlis$ | async"
+                [value]="kli.kodKli"
+              >
+                {{ kli.kodKliDescription }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field formGroupName="machlakaGroup">
+            <mat-label>מחלקה</mat-label>
+            <mat-select formControlName="machlaka">
+              <mat-option> חיפוש... (נשלים בבסיס) </mat-option>
+              <mat-option
+                *ngFor="let machlaka of machlakot$ | async"
+                [value]="machlaka.machlakaId"
+              >
+                {{ machlaka.machlakaDescription }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+        <button
+          mat-stroked-button
+          [disabled]="!(kliAndMachlakaSelected$ | async)"
+          (click)="onEquipmentListClick()"
+        >
+          <mat-icon>save_alt</mat-icon>
+          רשימת ציוד
+        </button>
+      </div>
+    </div>
+
+    <ng-container
+      *ngTemplateOutlet="stepperLayoutBottomLastPage; context: {$implicit: 'אישור'}"
+      class="stepper__bottom__layout"
+    ></ng-container>
+  </mat-step>
+</mat-stepper>
+
+<ng-template #stepperLayoutTop>
+  <div class="stepper__top__layout__title__container">
+    <mat-icon class="stepper__top__layout__title__container__icon"
+      >border_color</mat-icon
+    >
+    <span class="stepper__top__layout__title__container__text">חתימות</span>
+  </div>
+  <div class="stepper__title__seperator"></div>
+</ng-template>
+
+<ng-template #stepperLayoutBottom let-buttonText>
+  <div class="stepper__title__seperator"></div>
+  <div class="stepper__bottom__layout__buttons__container">
+    <button
+      mat-flat-button
+      mat-dialog-close
+      data-cancel
+      tabindex="-1"
+      class="stepper__bottom__layout__buttons__container__button"
+    >
+      ביטול
+    </button>
+    <button
+      mat-flat-button
+      tabindex="-1"
+      class="stepper__bottom__layout__buttons__container__button"
+      [disabled]="!(kliAndMachlakaSelected$ | async)"
+      (click)="advanceStep()"
+    >
+      {{ buttonText }}
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #stepperLayoutBottomLastPage let-buttonText>
+  <div class="stepper__title__seperator"></div>
+  <div data-last-page class="stepper__bottom__layout__buttons__container">
+    <button
+      mat-flat-button
+      mat-dialog-close
+      tabindex="-1"
+      class="stepper__bottom__layout__buttons__container__button"
+    >
+      {{ buttonText }}
+    </button>
+  </div>
+</ng-template>
