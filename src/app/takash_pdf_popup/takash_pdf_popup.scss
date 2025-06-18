@@ -184,6 +184,7 @@
         .mdc-button {
           background-color: rgb(64, 65, 64);
           color: white;
+          transition: background-color 0.3s;
 
           &:disabled {
             color: #ffffff;
@@ -194,6 +195,11 @@
             background-color: white;
             color: #a3a3a5;
             border: 1px solid #dad7d7;
+            transition: background-color 0.3s;
+
+            &:hover {
+              background-color: #f3f3f3;
+            }
           }
         }
       }

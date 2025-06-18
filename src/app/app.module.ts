@@ -13,9 +13,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaorApprovalChoicePopup } from './maor_awaiting_approval_choice_popup/maor_awaiting_approval_choice_popup';
+import { MaorDeletePopup } from './maor_delete_popup/maor_delete_popup';
 
 @NgModule({
-  declarations: [AppComponent, TakashPdfPopupComponnt],
+  declarations: [
+    AppComponent,
+    TakashPdfPopupComponnt,
+    MaorApprovalChoicePopup,
+    MaorDeletePopup,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

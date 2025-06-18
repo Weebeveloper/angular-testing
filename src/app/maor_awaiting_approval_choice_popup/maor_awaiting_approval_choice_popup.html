@@ -1,0 +1,148 @@
+<div class="popup__container">
+  <button
+    mat-icon-button
+    tabindex="-1"
+    mat-dialog-close
+    class="popup__container__close__button"
+  >
+    <mat-icon class="popup__container__close__button__icon">close</mat-icon>
+  </button>
+
+  <div class="popup__container__image">
+    <svg
+      *ngIf="!data.deleteRequest"
+      width="144"
+      height="92"
+      viewBox="0 0 144 92"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="26.0157"
+        width="91.7526"
+        height="91.7526"
+        rx="45.8763"
+        fill="#80CE45"
+      />
+      <path
+        d="M52.2581 46.7171L66.6578 65.3537C66.9689 65.7564 67.5837 65.7337 67.8644 65.3093L92.0363 28.7587"
+        stroke="white"
+        stroke-width="7.64605"
+        stroke-linecap="round"
+      />
+      <path
+        d="M125.421 45.5156H142"
+        stroke="#80CE45"
+        stroke-width="2.65263"
+        stroke-linecap="round"
+      />
+      <path
+        d="M124.758 24.2197L139.682 16.9998"
+        stroke="#80CE45"
+        stroke-width="2.65263"
+        stroke-linecap="round"
+      />
+      <path
+        d="M124.758 66.7363L138.847 75.4747"
+        stroke="#80CE45"
+        stroke-width="2.65263"
+        stroke-linecap="round"
+      />
+      <path
+        d="M18.579 45.5156H2.00003"
+        stroke="#80CE45"
+        stroke-width="2.65263"
+        stroke-linecap="round"
+      />
+      <path
+        d="M19.2421 24.2197L4.3178 16.9998"
+        stroke="#80CE45"
+        stroke-width="2.65263"
+        stroke-linecap="round"
+      />
+      <path
+        d="M19.2421 66.7363L5.153 75.4747"
+        stroke="#80CE45"
+        stroke-width="2.65263"
+        stroke-linecap="round"
+      />
+    </svg>
+
+    <svg
+      *ngIf="data.deleteRequest"
+      width="91"
+      height="91"
+      viewBox="0 0 91 91"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="91" height="91" rx="45.5" fill="#DB2020" />
+      <path
+        d="M29.3283 29L61.9887 61.6604"
+        stroke="white"
+        stroke-width="8.58333"
+        stroke-linecap="round"
+      />
+      <path
+        d="M29.3283 29L61.9887 61.6604"
+        stroke="white"
+        stroke-width="8.58333"
+        stroke-linecap="round"
+      />
+      <path
+        d="M61.6604 29L29 61.6604"
+        stroke="white"
+        stroke-width="8.58333"
+        stroke-linecap="round"
+      />
+      <path
+        d="M61.6604 29L29 61.6604"
+        stroke="white"
+        stroke-width="8.58333"
+        stroke-linecap="round"
+      />
+    </svg>
+  </div>
+
+  <div class="popup__container__title">
+    <span *ngIf="!data.deleteRequest"
+      >?האם לאשר את בקשת מאור {{ data.maorRequestId }}</span
+    >
+    <span *ngIf="data.deleteRequest"
+      >?האם לדחות את בקשת מאור {{ data.maorRequestId }}</span
+    >
+  </div>
+
+  <div class="choice__description">
+    <div class="choice__description__title">
+      <span *ngIf="!data.deleteRequest">נימוק לאישור</span>
+      <span *ngIf="data.deleteRequest">נימוק לדחייה</span>
+    </div>
+    <textarea
+      class="choice__description__textarea"
+      [dir]="'rtl'"
+      maxlength="250"
+    ></textarea>
+  </div>
+
+  <div class="popup__container__buttons__container">
+    <button
+      mat-flat-button
+      mat-dialog-close
+      tabindex="-1"
+      class="popup__container__buttons__container__button"
+      (click)="onAccept()"
+    >
+      אישור
+    </button>
+    <button
+      mat-flat-button
+      mat-dialog-close
+      data-cancel
+      tabindex="-1"
+      class="popup__container__buttons__container__button"
+    >
+      ביטול
+    </button>
+  </div>
+</div>
