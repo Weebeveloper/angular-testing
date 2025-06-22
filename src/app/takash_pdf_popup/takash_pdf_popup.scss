@@ -153,6 +153,7 @@
         font-size: 1.4rem;
         font-weight: bold;
         text-align: center;
+        user-select: none;
       }
     }
   }
@@ -184,6 +185,7 @@
         .mdc-button {
           background-color: rgb(64, 65, 64);
           color: white;
+          border-radius: 7px;
           transition: background-color 0.3s;
 
           &:disabled {

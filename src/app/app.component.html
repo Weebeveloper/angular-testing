@@ -1,8 +1,21 @@
-<button (click)="openTakashPDF()">תכ"ש PDF</button>
-<button (click)="openMaorAwaitingApprovalChoicePopup(false)">
-  מאו"ר (ממתינות לאישור - אישור)
-</button>
-<button (click)="openMaorAwaitingApprovalChoicePopup(true)">
-  מאו"ר (ממתינות לאישור - דחייה)
-</button>
-<button (click)="openDeleteMaorPopup()">מאו"ר (מחיקה)</button>
+<div
+  class="buttons__container"
+  *ngIf="!showMaorSplashscreen; else maorSplashscreen"
+>
+  <button (click)="openMaorSplashscreen()">מאור טעינה</button>
+  <button (click)="openTakashPDF()">תכ"ש PDF</button>
+  <button (click)="openTakashChangeLocation()">תכ"ש שינוי מיקום</button>
+  <button (click)="openMaorAwaitingApprovalChoicePopup(false)">
+    מאו"ר (ממתינות לאישור - אישור)
+  </button>
+  <button (click)="openMaorAwaitingApprovalChoicePopup(true)">
+    מאו"ר (ממתינות לאישור - דחייה)
+  </button>
+  <button (click)="openDeleteMaorPopup()">מאו"ר (מחיקה)</button>
+</div>
+
+<ng-template #maorSplashscreen>
+  <div class="maor__splashscreen">
+    <maor-splashscreen></maor-splashscreen>
+  </div>
+</ng-template>

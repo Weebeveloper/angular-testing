@@ -1,13 +1,19 @@
-:host {
-  width: 100%;
-  height: 100%;
+.buttons__container {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10em;
+  margin-top: 3.5em;
+
+  button {
+    transform: scale(4);
+  }
 }
 
-button {
-  transform: scale(4);
+.maor__splashscreen {
+  width: 100vw;
+  height: 100vh;
 }

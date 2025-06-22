@@ -1,0 +1,169 @@
+<div class="popup__container">
+  <button
+    mat-icon-button
+    tabindex="-1"
+    mat-dialog-close
+    class="popup__container__close__button"
+  >
+    <mat-icon class="popup__container__close__button__icon">close</mat-icon>
+  </button>
+
+  <div class="popup__container__top__title__container">
+    <span class="popup__container__top__title__container__text"
+      >שינוי מיקום</span
+    >
+
+    <svg
+      width="20"
+      height="21"
+      viewBox="0 0 20 21"
+      fill="none"
+      class="popup__container__top__title__container__icon"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M9.99999 2.16675C6.32415 2.16675 3.33332 5.15758 3.33332 8.82925C3.30915 14.2001 9.74665 18.6534 9.99999 18.8334C9.99999 18.8334 16.6908 14.2001 16.6667 8.83341C16.6667 5.15758 13.6758 2.16675 9.99999 2.16675ZM9.99999 12.1667C8.15832 12.1667 6.66665 10.6751 6.66665 8.83341C6.66665 6.99175 8.15832 5.50008 9.99999 5.50008C11.8417 5.50008 13.3333 6.99175 13.3333 8.83341C13.3333 10.6751 11.8417 12.1667 9.99999 12.1667Z"
+        fill="rgb(127, 86, 217)"
+      />
+    </svg>
+  </div>
+
+  <div class="popup__container__main__content">
+    <div class="popup__container__main__content__title">
+      <span class="popup__container__big__title">{{ data.itemId }}</span>
+      <span class="popup__container__subtitle">{{ data.itemName }}</span>
+    </div>
+
+    <div class="popup__container__main__content__fields">
+      <div class="popup__container__main__content__fields__preview">
+        <div class="dropdown__field">
+          <span class="dropdown__field__title">מדור</span>
+          <div class="dropdown__field__input">
+            {{ data.mador.madorId }} - {{ data.mador.madorDescription }}
+          </div>
+        </div>
+
+        <div class="dropdown__field">
+          <span class="dropdown__field__title">קבוצת ציוד</span>
+          <div class="dropdown__field__input">
+            {{ data.kvutsatTsiod.kvutsatTsiodId }} - {{
+            data.kvutsatTsiod.kvutsatTsiodDescription }}
+          </div>
+        </div>
+
+        <div class="row__fields">
+          <div class="row__fields__field">
+            <span class="row__fields__field__title">יתרה</span>
+            <div class="row__fields__field__input">{{ data.yitra }}</div>
+          </div>
+
+          <div class="row__fields__field">
+            <span class="row__fields__field__title">תקן</span>
+            <div class="row__fields__field__input">{{ data.teken }}</div>
+          </div>
+        </div>
+
+        <div class="textarea__field">
+          <span class="textarea__field__title">מיקום</span>
+          <div class="textarea__field__input">{{ data.location }}</div>
+        </div>
+      </div>
+
+      <form
+        class="popup__container__main__content__fields__inputs"
+        [formGroup]="filters"
+        [dir]="'rtl'"
+      >
+        <mat-form-field formGroupName="madorGroup" class="dropdown__field">
+          <mat-label>מדור</mat-label>
+          <mat-select formControlName="mador">
+            <mat-option> חיפוש... (נשלים בבסיס) </mat-option>
+            <mat-option *ngFor="let mador of madors$ | async" [value]="mador">
+              {{ mador.madorId }} - {{ mador.madorDescription }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field
+          formGroupName="kvutsatTsiodGroup"
+          class="dropdown__field"
+        >
+          <mat-label>קבוצת ציוד</mat-label>
+          <mat-select formControlName="kvutsatTsiod">
+            <mat-option> חיפוש... (נשלים בבסיס) </mat-option>
+            <mat-option
+              *ngFor="let kvutsatTsiod of kvutsotTsiod$ | async"
+              [value]="kvutsatTsiod"
+            >
+              {{ kvutsatTsiod.kvutsatTsiodDescription }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="row__fields">
+          <div class="row__fields__field">
+            <span class="row__fields__field__title">יתרה</span>
+            <div class="row__fields__field__inputs">
+              <button
+                class="row__fields__field__inputs__button"
+                mat-icon-button
+              >
+                <mat-icon>close</mat-icon>
+              </button>
+              <mat-form-field class="row__fields__field__inputs__formfield">
+                <input
+                  matInput
+                  formControlName="yitra"
+                  [value]="data.yitra"
+                  [placeholder]="data.yitra.toString()"
+                  [readonly]="true"
+                />
+              </mat-form-field>
+              <button
+                class="row__fields__field__inputs__button"
+                mat-icon-button
+              >
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <!-- <div class="row__fields__field">
+            <span class="row__fields__field__title">תקן</span>
+            <mat-form-field class="row__fields__field__input">
+              <input
+                matInput
+                formControlName="teken"
+                [value]="data.teken"
+                [placeholder]="data.teken.toString()"
+                [readonly]="true"
+              />
+            </mat-form-field>
+          </div> -->
+        </div>
+
+        <mat-form-field formGroupName="madorGroup" class="textarea__field">
+          <mat-label>מדור</mat-label>
+          <mat-select formControlName="mador">
+            <mat-option> חיפוש... (נשלים בבסיס) </mat-option>
+            <mat-option *ngFor="let mador of madors$ | async" [value]="mador">
+              {{ mador.madorId }} - {{ mador.madorDescription }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup__container__bottom__button__container">
+    <button
+      mat-flat-button
+      mat-dialog-close
+      tabindex="-1"
+      class="popup__container__bottom__button__container__button"
+      (click)="onAccept()"
+    >
+      אישור
+    </button>
+  </div>
+</div>

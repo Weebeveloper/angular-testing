@@ -9,7 +9,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class MaorDeletePopup {
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public data: { maorRequestName: string; maorRequestId: number }
+    public readonly data: { maorRequestName: string; maorRequestId: number }
   ) {}
 
   onAccept() {}
