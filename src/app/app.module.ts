@@ -16,7 +16,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaorApprovalChoicePopup } from './maor_awaiting_approval_choice_popup/maor_awaiting_approval_choice_popup';
 import { MaorDeletePopup } from './maor_delete_popup/maor_delete_popup';
 import { TakashChangeLocationPopup } from './takash_change_location/takash_change_location_popup';
-import { MaorSplashScreenComponent } from './maor_splashscreen/maor-splashscreen';
+import {
+  MaorSplashScreen2Component,
+  MaorSplashScreenComponent,
+} from './maor_splashscreens';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import { MaorSplashScreenComponent } from './maor_splashscreen/maor-splashscreen
     MaorApprovalChoicePopup,
     MaorDeletePopup,
     MaorSplashScreenComponent,
+    MaorSplashScreen2Component,
   ],
   imports: [
     BrowserModule,

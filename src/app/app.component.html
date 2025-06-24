@@ -3,6 +3,7 @@
   *ngIf="!showMaorSplashscreen; else maorSplashscreen"
 >
   <button (click)="openMaorSplashscreen()">מאור טעינה</button>
+  <button (click)="openMaorSplashscreen2()">מאור טעינה 2</button>
   <button (click)="openTakashPDF()">תכ"ש PDF</button>
   <button (click)="openTakashChangeLocation()">תכ"ש שינוי מיקום</button>
   <button (click)="openMaorAwaitingApprovalChoicePopup(false)">
@@ -15,7 +16,10 @@
 </div>
 
 <ng-template #maorSplashscreen>
-  <div class="maor__splashscreen">
-    <maor-splashscreen></maor-splashscreen>
+  <div class="maor__splashscreen" [ngSwitch]="splashscreenName">
+    <maor-splashscreen *ngSwitchCase="'maor-splashscreen'"></maor-splashscreen>
+    <maor-splashscreen2
+      *ngSwitchCase="'maor-splashscreen2'"
+    ></maor-splashscreen2>
   </div>
 </ng-template>

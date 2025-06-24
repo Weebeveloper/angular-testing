@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TakashPdfPopupComponnt } from './takash_pdf_popup/takash_pdf_popup';
 import { MaorApprovalChoicePopup } from './maor_awaiting_approval_choice_popup/maor_awaiting_approval_choice_popup';
 import { MaorDeletePopup } from './maor_delete_popup/maor_delete_popup';
 import { TakashChangeLocationPopup } from './takash_change_location/takash_change_location_popup';
-import { MaorSplashScreenComponent } from './maor_splashscreen/maor-splashscreen';
-import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +14,7 @@ export class AppComponent {
   constructor(private readonly _dialog: MatDialog) {}
 
   showMaorSplashscreen = false;
+  splashscreenName = '';
 
   openTakashPDF() {
     this._dialog.open(TakashPdfPopupComponnt, {
@@ -62,7 +61,16 @@ export class AppComponent {
     });
   }
 
-  async openMaorSplashscreen() {
+  openMaorSplashscreen() {
+    this.splashscreenName = 'maor-splashscreen';
+    this.showMaorSplashscreen = true;
+    setTimeout(() => {
+      this.showMaorSplashscreen = false;
+    }, 5000);
+  }
+
+  openMaorSplashscreen2() {
+    this.splashscreenName = 'maor-splashscreen2';
     this.showMaorSplashscreen = true;
     setTimeout(() => {
       this.showMaorSplashscreen = false;

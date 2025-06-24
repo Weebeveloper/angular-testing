@@ -1,0 +1,51 @@
+.animation__container {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(
+    to right,
+    rgba(185, 127, 233, 0.1),
+    rgb(86, 174, 231, 0.1),
+    rgb(0, 254, 226, 0.1)
+  );
+
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: initial;
+
+  .maor__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 450px;
+    height: 450px;
+
+    &__main__content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: scale(3.5);
+
+      .maor__dollar__right {
+        position: absolute;
+        transform: translateY(8.5px) translateX(1009px);
+      }
+
+      .maor__dollar__left {
+        position: absolute;
+        transform: translateY(-8.5px) translateX(-1009px);
+      }
+    }
+
+    &__title {
+      margin-top: 10em;
+      transform: scale(5);
+      opacity: 0;
+    }
+  }
+}
